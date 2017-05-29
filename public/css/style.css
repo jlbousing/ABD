@@ -1,0 +1,28 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    border: none;
+    text-align: left;
+    padding: 8px;
+}
+
+#sectionRegistro{
+    top: 100px;
+}
+
+#ListaVehiculo{
+    background-color: #8DD3BB;
+    border-radius: 20px;
+    color: white;
+    border-top: 10px;
+}
+
+#nuevoServicio{
+    
+    width: 100%;
+}

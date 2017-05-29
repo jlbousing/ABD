@@ -1,0 +1,19 @@
+{
+  "name": "padmin",
+  "version": "1.0.0",
+  "description": "proyecto de administracion de bd",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jorge Bou-saad",
+  "license": "ISC",
+  "dependencies": {
+    "dust": "^0.3.0",
+    "dustjs-helpers": "^1.7.3",
+    "dustjs-linkedin": "^2.7.5",
+    "express": "^4.15.2",
+    "mssql": "^3.3.0",
+    "socket.io": "^1.7.3"
+  }
+}

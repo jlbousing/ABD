@@ -1,0 +1,226 @@
+<html>
+    <head>
+        <title>Registro</title>
+        <meta charset="utf-8">
+        <link href="/css/bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="/css/style.css" type="text/css" rel="stylesheet">
+        <link href="/css/bootstrap-datepicker.min.css" type="text/css" rel="stylesheet">
+    </head>
+    
+    <body>
+        
+        
+        <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="#">ServicioCarro</a>
+              </div>
+           <ul class="nav navbar-nav">
+               <li><a href="/">Principal</a></li>
+               <li class="active"><a href="/registro">Registro</a></li>
+               <li><a href="/estadistica">Estadistica</a></li>
+               <li><a href="#">Log out</a></li>
+           </ul>
+          </div>
+       </nav>
+        
+        
+    <section>
+        <div class="container" id="botones">
+            <div class="row">
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <button class="btn btn-primary" onclick="ShowIngresoC()">Ingresar un nuevo cliente</button>
+                </div>
+    
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <button class="btn btn-success" onclick="ShowListaC()">Listar clientes registrados</button>
+                </div>
+
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <button class="btn btn-info" onclick="ShowIngresoV()">Registrar vehiculo</button>
+                </div>
+        
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <button class="btn btn-default" onclick="ShowListaV()">Listar vehiculos registrados</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+        
+    <section id="sectionRegistro">
+        <div class="container">
+
+            <div id="IngresoCliente">
+                <form method="post" action="/ingresoCliente">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <input type="text" name="nombre" placeholder="Ingrese su nombre">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <input type="text" name="apellido" placeholder="Ingrese su apellido">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <input type="text" name="ci" placeholder="Ingrese su cédula de identidad">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                        <input type="text" name="fechanacimiento" id="campo" class="campoFecha" placeholder="DD-MM-YYYY">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 col-lg-4">
+                            <input type="submit" value="Enviar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="ListaCliente">
+                
+                {#cliente}
+                
+                    <ul class="pagination">
+                        <li>
+                           <div id="itemCliente">
+                               <div class="container">
+                                   <p>Nombre: <strong>{nombre}</strong></p>
+                                   <p>Apellido: <strong>{apellido}</strong></p>
+                                   <p>ci: <strong>{ci}</strong></p>
+                                   <p>Fecha de nacimiento: <strong>{fechaNacimiento}</strong></p>
+                               </div>
+                           </div>
+                        </li>
+                    </ul>
+                {/cliente}
+            </div>
+            
+            <div id="IngresoVehiculo">
+                <form method="post" action="/ingresoVehiculo">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <select name="tipo">
+                                {#tipoVehiculo}
+                                    <option value="{tipovehiculo}">{tipovehiculo}</option>
+                                {/tipoVehiculo}
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <input type="text" name="placa" placeholder="Ingrese la placa del vehículo">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <select name="marca">
+                                {#marca}
+                                     <option value="{nombre_marca}">{nombre_marca}</option>
+                                {/marca}
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <select name="modelo">
+                                {#modelo}
+                                    <option value="{nombre_modelo}">{nombre_modelo}</option>
+                                {/modelo}
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <select name="color">
+                                {#color}
+                                    <option value="{nombre_color}">{nombre_color}</option>
+                                {/color}
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 col-lg-4">
+                            <input type="submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="ListaVehiculo">
+                
+                {#vehiculo}
+                <br>
+                   <ul>
+                       <li>
+                           <div id="itemVehiculo">
+                               <p>tipo: <strong>{tipovehiculo}</strong></p>
+                               <p>placa: <strong>{placa}</strong></p>
+                               <p>marca: <strong>{nombre_marca}</strong></p>
+                               <p>color: <strong>{nombre_color}</strong></p>
+                           </div>
+                       </li>
+                   </ul>
+                {/vehiculo}
+            </div>
+        
+        
+        </div>
+        </section>
+        
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3 col-lg-3">
+                        <button class="btn btn-primary" onclick="ShowIngresoS()">Ingresar servicio</button>
+                    </div>
+                    <div class="col-xs-12 col-md-3 col-lg-3">
+                        <button class="btn btn-success" onclick="ShowListaS()">Listar Servicios</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <br>
+            <div class="container">
+                <div id="IngresoServicio">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <input type="text" name="nombreservicio" placeholder="Ingrese el servicio">
+                        </div>
+                    </div>
+                </div>
+                <div id="ListaServicio">
+                    {#servicio}
+                        <ul>
+                            <div id=itemServicio>
+                                <li>{nombre_servicio}</li>
+                            </div>
+                        </ul>
+                    {/servicio}
+                </div>
+                
+            </div>
+        </section>
+    
+     <script src="/js/jquery.min.js"></script>
+     <script src="/js/bootstrap.min.js"></script>
+     <script src="/js/bootstrap-datepicker.min.js"></script>
+     <script src="/js/registroVC.js"></script>
+    </body>
+</html>

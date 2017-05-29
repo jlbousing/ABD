@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Principal</title>
+        <meta charset="utf-8">
+        <link href="/css/bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="/css/style.css" type="text/css" rel="stylesheet"> 
+        <link href="/css/bootstrap-datepicker.min.css" type="text/css" rel="stylesheet"> 
+    </head>
+    
+    <body>
+        
+        <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="#">ServicioCarro</a>
+              </div>
+           <ul class="nav navbar-nav">
+               <li class="active"><a href="#">Principal</a></li>
+               <li><a href="/registro">Registro</a></li>
+               <li><a href="#">Estadistica</a></li>
+               <li><a href="#">Log out</a></li>
+           </ul>
+          </div>
+       </nav>
+        
+        <header> <h3>Estadisticas</h3></header>
+        
+        
+        <div>
+                {#topv}
+                   <h1>Modelo de vehiculo mas ingresado {nombre_modelo}</h1>
+                {/topv}
+            </div>
+        <section>
+            
+            
+            <div>
+                {#tops}
+                    <h1>Servicio mas pedido {nombre_servicio}</h1>
+                {/tops}
+            </div>
+        </section>
+        
+        
+        <div id="container" style="min-width: 300px; height: 400px; margin: 0 auto"></div> 
+        
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap-datepicker.min.js"></script>
+        <script src="/js/principalVC.js"></script>
+        <script src="/js/socket.io.js"></script>
+        <script src="/js/hightcharts.js"></script>
+        <script src="/js/exporting.js"></script>
+        <script src="/js/estadisticaVC.js"></script>
+    </body>
+</html>

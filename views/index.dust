@@ -1,0 +1,191 @@
+<html>
+    <head>
+        <title>Principal</title>
+        <meta charset="utf-8">
+        <link href="/css/bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="/css/style.css" type="text/css" rel="stylesheet"> 
+        <link href="/css/bootstrap-datepicker.min.css" type="text/css" rel="stylesheet"> 
+    </head>
+    
+    <body>
+        
+        <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="#">ServicioCarro</a>
+              </div>
+           <ul class="nav navbar-nav">
+               <li class="active"><a href="/">Principal</a></li>
+               <li><a href="/registro">Registro</a></li>
+               <li><a href="/estadistica">Estadistica</a></li>
+               <li><a href="#">Log out</a></li>
+           </ul>
+          </div>
+       </nav>
+        
+      <section id="tituloPrincipal">
+          <div class="container">
+              <h1>Vehículos del día</h1>
+          </div>
+      </section>
+        
+    <section>    
+      <div id="CRUD1">
+          <div style="overflow-x:auto;">
+              <table>
+                  <tr>
+                      <th>Placa</th>
+                      <th>Cliente</th>
+                      <th>Servicio</th>
+                      <th>Precio</th>
+                      <th>Descuento</th>
+                  </tr>
+                  
+                  {#crud}
+                    <tr>
+                        <td>{placa}</td>
+                        <td>{nombre}</td>
+                        <td>{nombre_servicio}</td>
+                        <td>{precioGanancia}</td>
+                        <td>{descuento}</td>
+                    </tr>
+                  {/crud}
+              </table>
+          </div>
+      </div>
+        
+     
+    </section>
+        
+    <section>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12">
+                    <button class="btn btn-success" id="nuevoServicio" data-toggle="collapse" data-target="#detalleVehiculo">Detalle vehiculo</button>
+                </div>
+            </div>
+            <br>
+            <div id="detalleVehiculo" class="collapse">
+                <div class="container">
+                    <h5>Ingrese la placa del vehiculo</h5>
+                    <input type="text" id="buscarCarro">
+                    <button class="btn btn-danger" onclick="buscarCarro()">Enviar</button>
+                    <br>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12">
+                    <button class="btn btn-danger" id="nuevoServicio" data-toggle="modal" data-target="#nuevoCModal">Ingresar cita</button>
+                </div>
+            </div>
+           
+        </div>
+    </section>    
+        
+        
+ <div class="modal fade" id="nuevoCModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="nuevaCita">
+              <div class="container">
+                  <div class="row">
+                      <input type="" name="fecha" class="campofecha">
+                  </div>
+                  <br>
+                  <div class="row">
+                           <select name="listaS">
+                               {#ListaServicio}
+                               <option value="{nombre_servicio}">{nombre_servicio}</option>
+                               {/ListaServicio}
+                           </select>
+                  </div>
+                  <br>
+                  <div class="row">
+                      <input type="text" name="precioNeto" placeholder="Precio del servicio" id="precioNeto">
+                  </div>
+                  <br>
+                  <div class="row">
+                      <input type="text" name="precioGanancia" id="precioGanancia" placeholder="Precio total">
+                  </div>
+                  <br>
+                  <div class="row">
+                      <h6>Ingrese la CI del cliente</h6>
+                      <input type="text" name="ci">
+                  </div>
+                  <br>
+                  <div class="row">
+                      <h6>Ingrese la placa del vehiculo</h6>
+                      <select name="placa">
+                          {#vehiculoSelector}
+                                <option value="{placa}">{placa}</option>
+                          {/vehiculoSelector}
+                      </select>
+                  </div>
+                  <br>
+                  <div class="row">
+                      <h6>Seleccione el metodo de pago</h6>
+                      <select name="pago">
+                         {#tipo_pago}
+                            <option value="{tipo_pago}">{tipo_pago}</option>
+                         {/tipo_pago}
+                      </select>
+                  </div>
+                  <br>
+                  <div class="row">
+                      <input type="submit" value="Enviar">
+                  </div>
+              </div>
+              
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+        
+        
+        
+<div class="modal fade" id="rsp" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" id="modalrsp">
+            <input id="carro-marca" type="text">
+            <input id="carro-modelo" type="text">
+            <input id="carro-year" type="text">
+            <input id="carro-cilindro" type="text">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>         
+  
+</div>    
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap-datepicker.min.js"></script>
+        <script src="/js/principalVC.js"></script>
+        <script src="/js/socket.io.js"></script>
+        <script src="/js/connection.js"></script>
+    </body>
+</html>
